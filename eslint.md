@@ -7,6 +7,8 @@ title: ESLint
 permalink: /eslint/
 ---
 
+### Eslint
+
 Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, requiere de de babel-eslint.
 
 ```json
