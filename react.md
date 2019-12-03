@@ -7,12 +7,12 @@ title: React
 permalink: /react/
 ---
 
-### React
+# React
 
 Buenas prácticas de estilo y código para los projectos realizados con React.
 
 
-# Buenas prácticas
+### Buenas prácticas
 
 * Siempre punto y coma al final
 
