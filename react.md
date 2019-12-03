@@ -84,7 +84,7 @@ if(true){
 
 * Procurar no usar clases si no es necesario
 
-```js
+```javascript
 // Use
 const Component () => {
    return <Things />;
