@@ -8,6 +8,7 @@ layout: default
 Guía de estilo de código y buenas prácticas para el equípo de desarrollo de TCIT.
 
 
+* [React](/react)
 * [ESLint](/eslint)
 
 <!-- You can find the source code for Minima at GitHub:
