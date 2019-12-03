@@ -59,14 +59,14 @@ if(true){
 
 ```
 
-* Componentes en carpetas y dentro de ella un archivo index y un archivo de componentes o solo un archivo index
-
+* Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
 ```
 
 .
 |_ components
    |_ MyComponent
-      |_ MyComponent.js
+      |_ OtherComponent
+        |_ index.js
       |_ index.js
 
 
@@ -79,7 +79,16 @@ if(true){
    |_ MyComponent
       |_ index.js
 
-
+```
+* Los nombres de las carpetas han de ser de general a específico:
+```
+|_ components
+   |_ Button
+      |_ SmallButton
+         |_ index.js
+      |_ FabButton
+         |_ index.js
+      |_ index.js
 ```
 
 * Procurar no usar clases si no es necesario
