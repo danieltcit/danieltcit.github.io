@@ -156,6 +156,7 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
     
     // TCT: Check why this is not working
     "key-spacing": [1, {"beforeColon": false, "afterColon": true}],
+
     "lines-around-comment": 0,
     "linebreak-style": 0,
     "max-nested-callbacks": [1, 3],
@@ -177,6 +178,7 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
 
     // TCT: Check why this is not working
     "no-unneeded-ternary": 1,
+
     "object-curly-spacing": [1, "always"],
     "one-var": [1, {"uninitialized": "always", "initialized": "never"}],
     "operator-assignment": 0,
