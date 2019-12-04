@@ -35,32 +35,18 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
         "modules": true
       }
   },
-  "rules": {
-    /*
-    **  STRICT MODE
-    **  These rules relate to using strict mode.
-    */
-    "strict": [2, "global"], // `[2, "function"]` is default, optionally set `[2, "never"]`
-
-    /*
-    **  VARIABLES
-    **  These rules have to do with variable declarations.
-    */
-    "init-declarations": 0, // `[2, "always"]` is default
-    "no-catch-shadow": 0, // `2` is default
-    "no-delete-var": 1, // `2` is default
+  "rules": {  
+    "strict": [2, "global"],
+    "init-declarations": 0,
+    "no-catch-shadow": 0,
+    "no-delete-var": 1,
     "no-label-var": 2,
     "no-shadow-restricted-names": 2,
-    "no-shadow": [2, {"builtinGlobals": false, "hoist": "all"}], // `[2, {"builtinGlobals": false, "hoist": "functions"}]` is default
-    "no-undef-init": 1, // `2` is default
+    "no-shadow": [2, {"builtinGlobals": false, "hoist": "all"}],
+    "no-undef-init": 1,
     "no-undef": 2,
-    "no-unused-vars": [1, {"vars": "all", "args": "after-used"}], // `[2, {"vars": "all", "args": "after-used"}]` is default, optionally set `[2, {"vars": "all", "args": "after-used", "varsIgnorePattern": "<regex>", "argsIgnorePattern": "<regex>"}]`
+    "no-unused-vars": [1, {"vars": "all", "args": "after-used"}],
 
-    /*
-    **  POSSIBLE ERRORS
-    **  The following rules point out areas where you might
-    **  have made mistakes.
-    */
     "comma-dangle": [2, "only-multiline"],
     "no-cond-assign": [2, "except-parens"],
     "no-constant-condition": 2,
@@ -73,10 +59,10 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
     "no-empty": 2,
     "no-ex-assign": 2,
     "no-extra-boolean-cast": 2,
-    "no-extra-parens": [1, "all"], // `[2, "all"]` is default
-    "no-extra-semi": 1, // `2` is default
+    "no-extra-parens": [1, "all"],
+    "no-extra-semi": 1,
     "no-func-assign": 2,
-    "no-inner-declarations": [2, "both"], // `[2, "functions"]` is default
+    "no-inner-declarations": [2, "both"],
     "no-invalid-regexp": 2,
     "no-irregular-whitespace": 2,
     "no-negated-in-lhs": 2,
@@ -94,16 +80,10 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
     "react/destructuring-assignment": 0,
     "react/jsx-fragments": 0,
 
-    "valid-jsdoc": 0, // `2` is default
+    "valid-jsdoc": 0,
     "valid-typeof": 2,
     "no-unexpected-multiline": 2,
 
-    /*
-    **  BEST PRACTICES
-    **  These are rules designed to prevent you from making mistakes.
-    **  They either prescribe a better way of doing something or help
-    **  you avoid footguns.
-    */
     "accessor-pairs": [2, {"getWithoutSet": false, "setWithoutGet": true}],
     "block-scoped-var": 2,
     "consistent-return": 2,
@@ -111,161 +91,144 @@ Archivo de configuración de ESLint  `.eslintrc` para los proyectos de TCIT, req
     "curly": [2, "all"],
     "default-case": 2,
     "dot-notation": [2, {"allowKeywords": true, "allowPattern": ""}],
-    "dot-location": [2, "property"], // `[2, "object"]` is recommended
-    "eqeqeq": 2, // `2` is recommended, optionally set `[2, "smart"]` or `[2, "allow-null"]`
-    "no-alert": 1, // `2` is recommended
+    "dot-location": [2, "property"],
+    "eqeqeq": 2,
+    "no-alert": 1,
     "no-caller": 2,
     "no-div-regex": 2,
     "no-else-return": 2,
     "no-eq-null": 2,
     "no-eval": 2,
-    "no-extend-native": 2, // `2` is recommended, optionally set `[2, {"exceptions": ["Object"]}]`
+    "no-extend-native": 2,
     "no-extra-bind": 2,
-    "no-fallthrough": 1, // `2` is recommended
-    "no-floating-decimal": 1, // `2` is recommended
-    "no-implicit-coercion": [1, {"boolean": false, "number": true, "string": false}], // `[2, {"boolean": true, "number": true, "string": true}],` is recommended
+    "no-fallthrough": 1,
+    "no-floating-decimal": 1,
+    "no-implicit-coercion": [1, {"boolean": false, "number": true, "string": false}],
     "no-implied-eval": 2,
-    "no-invalid-this": 0, // `2` is recommended
+    "no-invalid-this": 0,
     "no-iterator": 2,
     "no-labels": 2,
     "no-lone-blocks": 2,
     "no-loop-func": 2,
-    "no-multi-spaces": [2, {"exceptions": {"VariableDeclarator": true, "ImportDeclaration": true, "AssignmentExpression": true, "ObjectExpression": true}}], // `2` is recommended
+    "no-multi-spaces": [2, {"exceptions": {"VariableDeclarator": true, "ImportDeclaration": true, "AssignmentExpression": true, "ObjectExpression": true}}],
     "no-multi-str": 2,
-    "no-native-reassign": 2, // `2` is recommended, optionally set `[2, {"exceptions": ["Object"]}]`
+    "no-native-reassign": 2,
     "no-new-func": 2,
     "no-new-wrappers": 2,
     "no-new": 2,
     "no-octal-escape": 2,
     "no-octal": 2,
-    "no-param-reassign": 1, // `2` is recommended and actually defaults to `[2, {"props": false}]`
-    "no-process-env": 1, // `2` is recommended
+    "no-param-reassign": 1,
+    "no-process-env": 1,
     "no-proto": 2,
-    "no-redeclare": [2, {"builtinGlobals": true}], // `2` is recommended and actually defaults to `[2, {"builtinGlobals": false}]`
+    "no-redeclare": [2, {"builtinGlobals": true}],
     "no-return-assign": [2, "except-parens"],
     "no-script-url": 2,
     "no-self-compare": 2,
     "no-sequences": 2,
     "no-throw-literal": 2,
-    "no-unused-expressions": 2, // `2` is recommended and actually defaults to `[2, {"allowShortCircuit": false, "allowTernary": false}]`
-    "no-useless-call": 1, // `2` is recommended
+    "no-unused-expressions": 2,
+    "no-useless-call": 1,
     "no-useless-concat": 2,
     "no-void": 2,
-    "no-warning-comments": [1, {"terms": ["todo", "fixme"], "location": "start"}], // `[0, { "terms": ["todo", "fixme", "xxx"], "location": "start" }]` is recommended
+    "no-warning-comments": [1, {"terms": ["todo", "fixme"], "location": "start"}],
     "no-with": 2,
-    "radix": 1, // `2` is recommended
-    "vars-on-top": 1, // `2` is recommended
-    "wrap-iife": [2, "inside"], // `[2, "outside"]` is recommended
-    "yoda": [1, "never"], // `[2, "never"]` is recommended, optionally set `[2, "never", {"exceptRange": true, "onlyEquality": false}]
+    "radix": 1,
+    "vars-on-top": 1,
+    "wrap-iife": [2, "inside"],
+    "yoda": [1, "never"],
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
-    /*
-    **  STYLISTIC ISSUES
-    **  These rules are purely matters of style and are
-    **  quite subjective.
-    */
-    "array-bracket-spacing": [1, "never"], // optionally set `[2, "never", {"singleValue": true, "objectsInArrays": true, "arraysInArrays": true}]`
+
+    "array-bracket-spacing": [1, "never"],
     "block-spacing": [1, "always"],
     "brace-style": [1, "1tbs", {"allowSingleLine": false}],
     "camelcase": [1, {"properties": "always"}],
     "comma-spacing": [1, {"before": false, "after": true}],
-    "comma-style": [1, "last"], // optionally set `[2, "first", {"exceptions": {"ArrayExpression": true, "ObjectExpression": true}}]`
+    "comma-style": [1, "last"],
     "computed-property-spacing": [1, "never"],
     "eol-last": 1,
     "func-names": 0,
-    "func-style": 0, // optionally set `[2, "expression"]`
-    "id-length": 0, // optionally set `[2, {"min": 3, "max": 10, "properties": "never", "exceptions": ["x"]}]`
-    "id-match": 0, // optionally set `[2, "^[a-z]+([A-Z][a-z]+)*$", {"properties": false}]`
-    "indent": [1, 2, {"SwitchCase": 1, "VariableDeclarator": 2}], // optionally set `[2, 2, {"SwitchCase": 1, "VariableDeclarator": {"var": 2, "let": 2, "const": 3}}]`
+    "func-style": 0,
+    "id-length": 0,
+    "id-match": 0,
+    "indent": [1, 2, {"SwitchCase": 1, "VariableDeclarator": 2}],
+    
     // TCT: Check why this is not working
-    "key-spacing": [1, {"beforeColon": false, "afterColon": true}], //[1, {"beforeColon": false, "afterColon": true, "mode": "minimum"}],  optionally set `[2, {"beforeColon": false, "afterColon": true, "mode": "strict", "align": "colon"}]`
-    "lines-around-comment": 0, // optionally set `[2, {"beforeBlockComment": true, "beforeLineComment": true, "allowBlockStart": true}]`
-    "linebreak-style": 0, // optionally set `[1, "unix"]`
+    "key-spacing": [1, {"beforeColon": false, "afterColon": true}],
+    "lines-around-comment": 0,
+    "linebreak-style": 0,
     "max-nested-callbacks": [1, 3],
-    "new-cap": [1, {"newIsCap": true, "capIsNew": true}], // optionally set `[2, {"capIsNewExceptions": ["Person"]}]`
+    "new-cap": [1, {"newIsCap": true, "capIsNew": true}],
     "new-parens": 1,
     "no-array-constructor": 1,
     "no-continue": 1,
     "no-inline-comments": 0,
     "no-lonely-if": 1,
-    "no-mixed-spaces-and-tabs": 1, // optionally set `[2, "smart-tabs"]`
+    "no-mixed-spaces-and-tabs": 1,
     "no-multiple-empty-lines": [1, {"max": 1}],
     "no-nested-ternary": 1,
     "no-new-object": 1,
-    "no-restricted-syntax": 0, // optionally set `[2, "FunctionExpression", "WithStatement"]`
+    "no-restricted-syntax": 0,
     "no-spaced-func": 1,
     "no-ternary": 0,
     "no-trailing-spaces": [1, {"skipBlankLines": false}],
     "no-underscore-dangle": 0,
+
     // TCT: Check why this is not working
-    "no-unneeded-ternary": 1, //[1, {"defaultAssignment": true}],
-    "object-curly-spacing": [1, "always"], // optionally set `[2, "always", {"objectsInObjects": false, "arraysInObjects": false}]`
-    "one-var": [1, {"uninitialized": "always", "initialized": "never"}], // optionally set `[2, {"var": "always", "let": "never", "const": "never"}]`
-    "operator-assignment": 0, // optionally set `[2, "always"]`
-    "operator-linebreak": [1, "after"], // optionally set `[2, "before", {"overrides": {"?": "after"}}]`
+    "no-unneeded-ternary": 1,
+    "object-curly-spacing": [1, "always"],
+    "one-var": [1, {"uninitialized": "always", "initialized": "never"}],
+    "operator-assignment": 0,
+    "operator-linebreak": [1, "after"],
     "padded-blocks": [1, "never"],
     "quote-props": [1, "as-needed", {"keywords": false, "unnecessary": false, "numbers": true}],
     "quotes": [1, "single", "avoid-escape"],
     "require-jsdoc": 0,
     "semi-spacing": [1, {"before": false, "after": true}],
     "semi": [1, "always"],
-    "sort-vars": 0, // optaionlly set `[2, {"ignoreCase": true}]`
+    "sort-vars": 0,
     "keyword-spacing": [2, {"before": true, "after": true, "overrides": {}}],
-    "space-before-blocks": [1, "always"], // optionally set `[2, {"functions": "never", "keywords": "always"}]`
-    "space-before-function-paren": [1, "never"], // optionally set `[2, {"anonymous": "always", "named": "never"}]`
-    "space-in-parens": [1, "never"], // optionally set `[2, "always", {"exceptions": ["empty"]}]`
+    "space-before-blocks": [1, "always"],
+    "space-before-function-paren": [1, "never"],
+    "space-in-parens": [1, "never"],
     "space-infix-ops": [1, {"int32Hint": false}],
-    "spaced-comment": [1, "always", {"exceptions": ["/"]}], // optionally set `[2, "always", {"exceptions": ["-", "+"], "markers": ["/"]}]`
+    "spaced-comment": [1, "always", {"exceptions": ["/"]}],
     "wrap-regex": 1,
-    
-    /*
-    **  ECMASCRIPT 6
-    **  These rules are only relevant to ES6 environments.
-    */
+
     "arrow-parens": [1, "as-needed"],
     "arrow-spacing": [2, {"before": true, "after": true}],
     "constructor-super": 2,
     "generator-star-spacing": [2, {"before": false, "after": true}],
     "no-class-assign": 2,
     "no-const-assign": 2,
-    "no-dupe-class-members": 0, // `2` is default, only use on ES6+ environments
+    "no-dupe-class-members": 0,
     "no-this-before-super": 2,
-    "no-var": 0, // `2` is default, only use on ES6+ environments - when using this set `"blockBindings": true` in `ecmaFeatures` object
-    "object-shorthand": 0, // `[2, "always"]` is default
-    "prefer-arrow-callback": 0, // `2` is default, only use on ES6+ environments
-    "prefer-const": 1, // `2` is default
-    "prefer-spread": 0, // `2` is default, only use on ES6+ environments
-    "prefer-reflect": 0, // `2` is default, only use on ES6+ environments, optionally set `[2, {exceptions: ["apply", "call"]}]`
-    "prefer-template": 0, // `2` is default, only use on ES6+ environments
+    "no-var": 0,
+    "object-shorthand": 0,
+    "prefer-arrow-callback": 0,
+    "prefer-const": 1,
+    "prefer-spread": 0,
+    "prefer-reflect": 0,
+    "prefer-template": 0,
     "require-yield": 2,
 
-    /*
-    **  NODE.JS AND COMMONJS
-    **  These rules are specific to JavaScript running on Node.js or
-    **  using CommonJS in the browser.
-    */
-    "callback-return": 0, // `2` is default, optionally set `[2, ["callback", "cb", "next"]]`
-    "global-require": 0, // `2` is default
-    "handle-callback-err": 0, // `2` is default, optionally set `[2, "^(err|error)$"]`
-    "no-mixed-requires": 0, // [2, false] is default
-    "no-new-require": 0, // `2` is default
-    "no-path-concat": 0, // `2` is default
-    "no-process-exit": 0, // `2` is default
-    "no-restricted-modules": 0, // no default, optionally set `[2, "fs", "os"]`
-    "no-sync": 0, // `2` is default
+    "callback-return": 0,
+    "global-require": 0,
+    "handle-callback-err": 0,
+    "no-mixed-requires": 0,
+    "no-new-require": 0,
+    "no-path-concat": 0,
+    "no-process-exit": 0,
+    "no-restricted-modules": 0,
+    "no-sync": 0,
 
-    /*
-    **  LEGACY
-    **  The following rules are included for compatibility with JSHint and
-    **  JSLint. While the names of the rules may not match up with the
-    **  JSHint/JSLint counterpart, the functionality is the same.
-    */
-    "max-depth": 0, // `[2, 4]` is default
-    "max-len": 0, // `[2, 80, 4]` is default, optionally set `[2, 80, 4, {"ignoreComments": true, "ignoreUrls": true}]`
-    "max-params": 0, // no default, optionally set `[2, 3]`
-    "max-statements": 0, // no default, optionally set `[2, 2]`
-    "no-bitwise": 1, // `2` is default
-    "no-plusplus": 0 // `2` is default
+    "max-depth": 0,
+    "max-len": 0,
+    "max-params": 0,
+    "max-statements": 0,
+    "no-bitwise": 1,
+    "no-plusplus": 0
   }
 }
 ```
