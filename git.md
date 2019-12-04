@@ -4,7 +4,7 @@
 
 layout: default
 title: Git
-permalink: /Git/
+permalink: /git/
 ---
 
 # Git
