@@ -9,6 +9,7 @@ Guía de estilo de código y buenas prácticas para el equípo de desarrollo de 
 
 
 * [React](/react)
+* [Git](/git)
 * [ESLint](/eslint)
 
 <!-- You can find the source code for Minima at GitHub:
