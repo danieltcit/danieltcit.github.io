@@ -60,6 +60,7 @@ if(true){
 ```
 
 * Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
+
 ```
 
 .
@@ -91,11 +92,15 @@ if(true){
       |_ index.js
 ```
 
-* Procurar no usar clases si no es necesario
+* Procurar no usar clases si no es necesario.
+> Cuando usar clases?
+> * Cuando se ha de usar algún ciclo de vida como `constructor()`, `static getDerivedStateFromProps()`, `getSnapshotBeforeUpdate()`.
+> * Manejadores de errores: `static getDerivedStateFromError()`, `componentDidCatch()`.
+> * Cuando se tienen muchas funciones dentro del container y estas son difíciles de mantener usando los hooks `useCallback` o `useMemo`.
 
 ```javascript
-// Prefer
-const Component () => {
+// Use
+const Component = () => {
    return <Things />;
 };
 // Instead of
@@ -244,7 +249,19 @@ export default PieGraph;
 
 ```
 
+* Container usando una función `Stateless`
+> * Hacer use del hook `useEffect` cuando necesitamos algo ~similar~ a: `componentDidMount()` y `componentDidUpdate()`.
+  * **componentDidMount**
+  ```js
+  const Component = () => {
+    useEffect(() => {
+      // This act as a componentDidMount
+    }, []);
+  }
+  ```
+
 * Minimizar la cantidad de props al pasarlas al componente hijo
+
 
 ```js
 // Avoid passign all props or big props
