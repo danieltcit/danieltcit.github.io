@@ -9,7 +9,7 @@ permalink: /git/
 
 # Git
 
-* Todos los nombre de ramas de git deben escribirse utilizando kebab-case
+* Todos los nombre de ramas de git deben escribirse utilizando `kebab-case`
 
 ```sh
 # Use
@@ -29,5 +29,3 @@ git checkout -b newBranch
 git add .
 git commit -m "Nuevo Módulo WIP"
 ```
-
-*
