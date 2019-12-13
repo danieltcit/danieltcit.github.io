@@ -12,7 +12,7 @@ permalink: /react/
 Buenas prácticas de estilo y código para los projectos realizados con React.
 
 
-### Buenas prácticas
+## Buenas prácticas
 
 * Siempre punto y coma al final
 
@@ -59,6 +59,8 @@ if(true){
 
 ```
 
+## Estructura de carpetas
+
 * Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
 
 ```
@@ -74,35 +76,41 @@ if(true){
 ```
 
 ```
-
 .
 |_ components
    |_ MyComponent
       |_ index.js
 
 ```
+
 * Los nombres de las carpetas han de ser de general a específico:
 ```
 |_ components
-   |_ Button
-      |_ SmallButton
-         |_ index.js
-      |_ FabButton
-         |_ index.js
-      |_ index.js
+   |_UI
+     |_ Button
+        |_ SmallButton
+           |_ index.js
+        |_ FabButton
+           |_ index.js
+        |_ index.js
 ```
 
+## Uso de clases y funciones
+
 * Procurar no usar clases si no es necesario.
-> Cuando usar clases?
-> * Cuando se ha de usar algún ciclo de vida como `constructor()`, `static getDerivedStateFromProps()`, `getSnapshotBeforeUpdate()`.
-> * Manejadores de errores: `static getDerivedStateFromError()`, `componentDidCatch()`.
-> * Cuando se tienen muchas funciones dentro del container y estas son difíciles de mantener usando los hooks `useCallback` o `useMemo`.
+
+> Importante Cuando usar clases?
+  * Cuando se ha de usar algún ciclo de vida como `constructor()`, `static getDerivedStateFromProps()`, `getSnapshotBeforeUpdate()`.
+  * Manejadores de errores: `static getDerivedStateFromError()`, `componentDidCatch()`.
+  * Cuando se tienen muchas funciones dentro del container y estas son difíciles de mantener usando los hooks `useCallback` o `useMemo`.
+
 
 ```javascript
 // Use
 const Component = () => {
    return <Things />;
 };
+
 // Instead of
 class Component extends React.Component {
   render(){
@@ -112,7 +120,24 @@ class Component extends React.Component {
 
 ```
 
+* Si se ha de usar un componente con una función `stateless` en vez de una Clase `statefull`. Se ha de usar la siguiente nomenclatura para distinguier entre una función que actua como componente o una función como tal. Esto es debido a que, con una función normal, podemos declarar funciones fuera del componente para evitar uso de memoria extra; esto tiende a generar conflictos visuales de cuál función es el componente. 
 
+```javascript
+function secondAction () {
+}
+
+// Component
+const Component = () => {
+
+  function firstAction() {
+  }
+  
+  return <Things />;
+};
+
+```
+
+## Acciones
 
 * Las acctiones deben ser bindeadas utilizando en general,  con .bind(this) ya que el bind con arrow function es hasta 10 veces más lento.
 
@@ -131,12 +156,45 @@ class Component extends React.Component {
 
 ```
 
-* Otra alternativa es utilizar hooks (@diego completa porfa)
+* Otra alternativa es utilizar una función *stateless* en vez de una clase. De esta manera poder utilizar funciones directamente sin necesidad de usar la función `bind()`.
 
 ```js
+const Component => () {
+  function action() {
+  }
+  
+  return <Things />;
+};
+
+export default Component;
 
 ```
 
+> Importante Al utilizar componentes de esta forma hay que tener en consideración los siguientes puntos:
+  * Cada vez que se reenderize el componente, las funciones de adentro se generarán nuevamente, usando memoria. Esto no es nada costozo a menos que se tengan muchas funciones y en su mayoría contengan mucha lógica. En este caso se ha de usar el efecto `useCallback` o cambiar el componente a un `statefull`.
+
+  * Ejemplo `useCallback`
+  ```js
+  const Component = props => {
+    const action = useCallback(() => {
+      // A lot of logic or a complex logic
+    },[ /* pass the dependencies that are being used inside */]);
+    
+    function action() {
+      // A simple logic or less code
+    }
+    
+    return <Things />;
+  };
+  
+  export default Component;
+  
+  ```
+ 
+  
+  * Cada vez que se reenderize el componente, las funciones de adentro se generarán nuevamente usando memoria extra. Esto no es nada costozo a menos que hayan muchas funciones y en su mayoría contengan mucha lógica. En este caso se ha de usar el efecto `useCallback` o cambiar el componente a un `statefull`.
+
+## Redux
 
 * Las funciones de reductor (Redux) deben ser escritas como *object* en lugar de *switch-case* de esta forma se reduce el overhead por exceso de comparaciones.
 
