@@ -62,7 +62,6 @@ if(true){
 * Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
 
 ```
-
 .
 |_ components
    |_ MyComponent
@@ -70,17 +69,15 @@ if(true){
         |_ index.js
       |_ index.js
 
-
 ```
 
 ```
-
 .
 |_ components
    |_ MyComponent
       |_ index.js
-
 ```
+
 * Los nombres de las carpetas han de ser de general a específico:
 ```
 |_ components
