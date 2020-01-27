@@ -14,13 +14,13 @@ Buenas prácticas de estilo y código para los projectos realizados con React.
 
 ### Buenas prácticas
 
-* Siempre punto y coma al final
+Siempre punto y coma al final.
 
 ```js
   const variable = 3;
 ```
 
-* Una línea al final de cada archivo
+Una línea al final de cada archivo.
 
 ```js
 ...
@@ -29,7 +29,7 @@ export default MiComponente; //Line Break
 
 ```
 
-* Los archivos al principio deben encontrarse las librerias oficiales y luego las importaciones locales
+Los archivos al principio deben encontrarse las librerias oficiales y luego las importaciones locales.
 
 ```js
 // Global
@@ -42,7 +42,7 @@ import InvoicesList from '../../components/Invoices/List';
 ...
 ```
 
-* Comentarios en inglés
+Comentarios en inglés.
 
 ```js
 // There must be a better way
@@ -53,15 +53,97 @@ if(true){
 }
 ```
 
-* Funciones van afuera de la funcion principal, si se ocupa dentro de otras screens, va en utils functions.
-
+Para las funciones globales se ha de comentar de la siguiente manera:
+*Más detalle en: https://jsdoc.app/tags-param.html*
 ```js
 
+/**
+ * Descripción de la función (en inglés):
+ * Qué se pasará como parámetro, que realizará y lo que devolverá (No más de 64 caracteres)
+ * 
+ * Parámetros que recibe: tipo, nombre parámetro y descripción de ser necesario.
+ * @param {string} key The key to match at the moment of finding the value.
+ * @param {any} value The value to match the value of the key param.
+ * 
+ * Se ha de dar un ejemplo
+ * // return found object in the array
+ * @example [].find(valueByKey('id', id));
+ */
+function valueByKey(key, value) {
+  // some logic
+}
 ```
+
+## Funciones
+
+Las funciones que se usarán solo en un componente o container van en el mismo archivo de este, de lo contrario se moverán al archivo común `utils.js`.
+
+Se ha de trabajar con programación funncinal más que orientada a objetos. Esto nos permite reutilizar más codigo y nos da simpleza al momento de escribir y entender el código.
+
+Los nombres de las funciones han de ser simples y que conecten con la inteción al momento de usar la función. Ejemplo, quiero buscar `(find)` el id `(key)` de un valor `(value)` dado.
+
+```js
+function valueByKey(params) {}
+
+function uniqueValue() {}
+
+ [].find(valueByKey('id', value));
+```
+El ejemplo anterior podemos leer *buscar el valor por la clave* de un valor dado.
+
+Las funciones que retornen valores booleanos se han de usar las palabras `is`, `are` y `exist` para permitir una mejor lectura.
+```js
+
+function areValidNumbers() {}
+
+// Literalmente podemos leer "si son números válidos" - If are valid numbers
+if (areValidNumbers()) { 
+}
+
+function userExist() {}
+
+// Literalmente podemos leer "si usuario existe" - If user exist
+if (userExist()) {
+}
+
+function isProccesCompleted() {}
+
+// Literalmente podemos leer "si está completado el proceso" - If the proccess is completed
+if (isProccessCompleted()) {
+}
+
+```
+
+Usar programación funcional para saber *qué* estoy haciendo sin perder tiempo sabiendo el *cómo*.
+
+```js
+// Use this
+[].map(valueByKey('name', value));
+
+// Instead of this
+[].map(value => value.name);
+
+...
+
+// Use this
+[{isActive: true, name: 'Doe'}, {isActive: false, name: 'John'}]
+  .map(pipe(
+    String.toUpperCase,
+    uniqueValue('name'),
+  )); // result: ['DOE', 'JOHN'];
+  
+// Instead of this
+[{isActive: true, name: 'Doe'}, {isActive: false, name: 'John'}]
+  .map(value => {
+     return value.name.toUpperCase();
+  }); // result: ['DOE', 'JOHN'];
+```
+
+
 
 * Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
-```
 
+```
 .
 |_ components
    |_ MyComponent
@@ -69,17 +151,15 @@ if(true){
         |_ index.js
       |_ index.js
 
-
 ```
 
 ```
-
 .
 |_ components
    |_ MyComponent
       |_ index.js
-
 ```
+
 * Los nombres de las carpetas han de ser de general a específico:
 ```
 |_ components
@@ -91,11 +171,15 @@ if(true){
       |_ index.js
 ```
 
-* Procurar no usar clases si no es necesario
+* Procurar no usar clases si no es necesario.
+> Cuando usar clases?
+> * Cuando se ha de usar algún ciclo de vida como `constructor()`, `static getDerivedStateFromProps()`, `getSnapshotBeforeUpdate()`.
+> * Manejadores de errores: `static getDerivedStateFromError()`, `componentDidCatch()`.
+> * Cuando se tienen muchas funciones dentro del container y estas son difíciles de mantener usando los hooks `useCallback` o `useMemo`.
 
 ```javascript
-// Prefer
-const Component () => {
+// Use
+const Component = () => {
    return <Things />;
 };
 // Instead of
@@ -244,7 +328,19 @@ export default PieGraph;
 
 ```
 
+* Container usando una función `Stateless`
+> * Hacer use del hook `useEffect` cuando necesitamos algo ~similar~ a: `componentDidMount()` y `componentDidUpdate()`.
+  * **componentDidMount**
+  ```js
+  const Component = () => {
+    useEffect(() => {
+      // This act as a componentDidMount
+    }, []);
+  }
+  ```
+
 * Minimizar la cantidad de props al pasarlas al componente hijo
+
 
 ```js
 // Avoid passign all props or big props
