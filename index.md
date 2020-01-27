@@ -12,6 +12,7 @@ Guía de estilo de código y buenas prácticas para el equípo de desarrollo de 
 
 * [React](/react)
 * [Git](/git)
+* [Git WorkFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 * [ESLint](/eslint)
 
 <!-- You can find the source code for Minima at GitHub:
