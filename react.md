@@ -139,9 +139,15 @@ Usar programación funcional para saber *qué* estoy haciendo sin perder tiempo 
   }); // result: ['DOE', 'JOHN'];
 ```
 
+Reglas importantes
+> * Las funciones que gatillan eventos del dom, hand de tener el sufijo `Handler`. *Ej.- onClick**Handler***
+> * Hand de user el prefijo `on[NombreEvento]`. *Ej.- **onClick***
+> * Si hay más de dos eventos iguales, ejemplo, dos `onClickHandler`, éste se ha de declarar usando un nombre que identifique qué gatilla la acción. *Ej. **onClickSummaryHandler**, **onClickModalCloseHandler***
 
 
-* Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
+## Estructura de carpetas
+
+Componentes en carpetas y dentro de ella un archivo index. De tener sub-componentes dentro de este componente se ha crear una nueva carpeta con su respectivo `index.js`.
 
 ```
 .
@@ -160,7 +166,7 @@ Usar programación funcional para saber *qué* estoy haciendo sin perder tiempo 
       |_ index.js
 ```
 
-* Los nombres de las carpetas han de ser de general a específico:
+Los nombres de las carpetas han de ser de general a específico:
 ```
 |_ components
    |_ Button
@@ -171,7 +177,9 @@ Usar programación funcional para saber *qué* estoy haciendo sin perder tiempo 
       |_ index.js
 ```
 
-* Procurar no usar clases si no es necesario.
+## Componentes
+
+Procurar no usar clases si no es necesario.
 > Cuando usar clases?
 > * Cuando se ha de usar algún ciclo de vida como `constructor()`, `static getDerivedStateFromProps()`, `getSnapshotBeforeUpdate()`.
 > * Manejadores de errores: `static getDerivedStateFromError()`, `componentDidCatch()`.
@@ -191,9 +199,7 @@ class Component extends React.Component {
 
 ```
 
-
-
-* Las acctiones deben ser bindeadas utilizando en general,  con .bind(this) ya que el bind con arrow function es hasta 10 veces más lento.
+Las acciones deben ser bindeadas utilizando, en general, con .bind(this) ya que el bind con arrow function es hasta 10 veces más lento.
 
 ```js
 class Component extends React.Component {
@@ -209,12 +215,33 @@ class Component extends React.Component {
 };
 
 ```
-
-* Otra alternativa es utilizar hooks (@diego completa porfa)
+Con las versiones actuales de CRA ya no es necesario hacer use de la función `bind`. Se han de seguir las siguientes reglas.
+  * Declarar las funciones afuera del render con como `arrow function`.
+  * Por lo general no declarar el constructor.
+  * El estado es declarado como una variable más pero sin `const`, `let` o `var`
 
 ```js
 
+class Component extends React.Component {
+  state = {
+  };
+
+  action = () => {
+    ...
+  };
+
+  render(){
+    return <Things />;
+  }
+};
+
 ```
+### containers vs components
+* Los containers deben de tener todo lógica compleja y acciones que han de compartir uno o muchos componentes. Por lo general contiene contiene un estado y, manipula y pasa los props.
+* Los componentes han solo de "pintar" la estructura html. Por lo general tienen poca lógica que es necesaria y propia para pintar el componente. Poco posibilidad de tener estado y manipular los props.
+
+## Hooks
+
 
 
 * Las funciones de reductor (Redux) deben ser escritas como *object* en lugar de *switch-case* de esta forma se reduce el overhead por exceso de comparaciones.
